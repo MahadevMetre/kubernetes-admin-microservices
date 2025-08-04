@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    environment {
+        KUBE_CONFIG = '/var/jenkins_home/.kube/config'
+        HELM_HOME = '/usr/local/bin/helm'
+        REGISTRY = 'localhost:5000'
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/youruser/k8s-ecommerce-project.git'
+            }
+        }
+        stage('Build & Push Docker Image') {
+            steps {
+                sh '''
+                docker build -t $REGISTRY/product-service:${BUILD_NUMBER} ./product-service
+                docker push $REGISTRY/product-service:${BUILD_NUMBER}
+                '''
+            }
+        }
+        stage('Deploy with Helm') {
+            steps {
+                sh '''
+                helm upgrade --install product-service ./helm-charts/product-service \
+                    --namespace ecommerce \
+                    --set image.repository=$REGISTRY/product-service \
+                    --set image.tag=${BUILD_NUMBER}
+                '''
+            }
+        }
+        stage('Verify Deployment') {
+            steps {
+                sh 'kubectl rollout status deployment/product-service -n ecommerce'
+            }
+        }
+    }
+}

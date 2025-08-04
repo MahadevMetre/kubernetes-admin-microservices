@@ -1,0 +1,4 @@
+# This project uses cert-manager from Jetstack:
+# https://github.com/jetstack/cert-manager
+# Install command:
+# kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.12.0/cert-manager.yaml
