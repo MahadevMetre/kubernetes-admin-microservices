@@ -1,0 +1,133 @@
+For your project documentation (to post on LinkedIn or share internally), you can generate a **full set of screenshots** showing every important step and deployed component.
+
+Below is a **step-by-step command list** you can run and capture screenshots for each output.
+
+---
+
+## **1️⃣ Cluster Status**
+
+```bash
+kubectl get nodes -o wide
+```
+
+👉 Screenshot: Shows KIND cluster with control plane and workers.
+
+---
+
+## **2️⃣ All Deployments and Pods**
+
+```bash
+kubectl get deployments
+kubectl get pods -o wide
+```
+
+👉 Screenshot: Running pods for MongoDB, Auth, Product, Order, Frontend.
+
+---
+
+## **3️⃣ Services**
+
+```bash
+kubectl get svc
+```
+
+👉 Screenshot: Shows ClusterIP or NodePort services for each microservice.
+
+---
+
+## **4️⃣ Ingress Controller**
+
+```bash
+kubectl get pods -n ingress-nginx
+kubectl get svc -n ingress-nginx
+kubectl get ingress
+```
+
+👉 Screenshot: NGINX ingress controller status and ingress rules.
+
+---
+
+## **5️⃣ MongoDB StatefulSet**
+
+```bash
+kubectl get statefulset
+kubectl describe statefulset mongodb
+```
+
+👉 Screenshot: MongoDB high availability setup.
+
+---
+
+## **6️⃣ Horizontal Pod Autoscaler**
+
+```bash
+kubectl get hpa
+```
+
+👉 Screenshot: HPA scaling configuration.
+
+---
+
+## **7️⃣ Network Policies**
+
+```bash
+kubectl get networkpolicy
+```
+
+👉 Screenshot: Network policies applied.
+
+---
+
+## **8️⃣ Monitoring and Logging**
+
+```bash
+kubectl get pods -n monitoring
+kubectl get pods -n logging
+```
+
+👉 Screenshot: Prometheus, Grafana, Elasticsearch, Fluentd, Kibana pods.
+
+---
+
+## **9️⃣ Certificates and Cert-Manager**
+
+```bash
+kubectl get pods -n cert-manager
+kubectl get clusterissuer
+```
+
+👉 Screenshot: Cert-Manager running and ClusterIssuer.
+
+---
+
+## **🔟 Disaster Recovery Snapshot**
+
+```bash
+ls -lh snapshot.db*
+```
+
+👉 Screenshot: ETCD snapshot backup file presence.
+
+---
+
+## **1️⃣1️⃣ Final Web Access**
+
+* Open browser → `http://ecommerce.local`
+* Capture a screenshot of the running UI (custom frontend or visualizer).
+
+---
+
+## **Extra: CI/CD Pipeline**
+
+If Jenkins is part of the setup:
+
+```bash
+docker ps | grep jenkins
+```
+
+* Open `http://localhost:8080`
+* Capture pipeline dashboard with successful deployment stages.
+
+---
+
+Would you like me to also **create a “Documentation Table of Contents” (with these screenshots embedded)** so you can directly turn it into a LinkedIn case study or PDF report?
