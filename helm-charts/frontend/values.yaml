@@ -1,7 +1,10 @@
 replicaCount: 2
 image:
-  repository: frontend
+  repository: dockersamples/visualizer
   tag: latest
+#image:
+ # repository: nginx
+ # tag: latest
 resources:
   requests:
     cpu: 100m

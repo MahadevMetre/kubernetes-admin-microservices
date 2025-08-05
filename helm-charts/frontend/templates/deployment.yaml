@@ -16,4 +16,4 @@ spec:
       - name: frontend
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         ports:
-        - containerPort: 80
+        - containerPort: 8080

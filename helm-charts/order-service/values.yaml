@@ -1,7 +1,7 @@
 replicaCount: 2
 image:
-  repository: order-service
-  tag: latest
+  repository: nginxdemos/hello
+  tag: plain-text
 resources:
   requests:
     cpu: 100m

@@ -1,6 +1,6 @@
 replicaCount: 2
 image:
-  repository: product-service
+  repository: hashicorp/http-echo
   tag: latest
 resources:
   requests:
